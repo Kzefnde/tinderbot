@@ -118,24 +118,36 @@ class MyTelegramBot extends HtmlTelegramBot {
     async profileDialog(msg){
         const text = msg.text
         this.count++;
-
         if (this.count === 1){
-            this.user["age"] = text;
-            await this.sendText("Кем вы работайте?")
+            this.user["name"] = text;
+            await this.sendText("Ваше имя")
         }
         if (this.count === 2){
+            this.user["gender"] = text;
+            await this.sendText("Ваш пол")
+        }
+        if (this.count === 3){
+            this.user["job"] = text;
+            await this.sendText("Кем вы работайте?")
+        }
+        if (this.count === 4){
             this.user["occupation"] = text;
             await this.sendText("У вас есть хобби?")
         }
-        if (this.count === 3){
+        if (this.count === 5){
             this.user["hobby"] = text;
             await this.sendText("Что вам не нравится в людях?")
         }
-        if (this.count === 4){
+        if (this.count === 6){
             this.user["annoys"] = text;
             await this.sendText("Цели знакомства?")
         }
-        if (this.count === 5){
+
+        if (this.count === 7){
+            this.user["about"] = text;
+            await this.sendText("Опишите себя")
+        }
+        if (this.count === 8){
             this.user["goals"] = text;
             const prompt =  this.loadPrompt("profile")
             const info = userInfoToString(this.user);
